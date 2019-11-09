@@ -20,6 +20,7 @@
 		11509329237590B60077652D /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509328237590B60077652D /* NotesViewController.swift */; };
 		1150932B237590F60077652D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932A237590F60077652D /* SettingsViewController.swift */; };
 		1150932D23759C4B0077652D /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddNoteViewController.swift */; };
+		1150933823771FEB0077652D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150933723771FEB0077652D /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		11509328237590B60077652D /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		1150932A237590F60077652D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1150932C23759C4B0077652D /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		1150933723771FEB0077652D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				11509313237579C30077652D /* WelcomeViewController.swift */,
+				1150933723771FEB0077652D /* RootViewController.swift */,
 				1150932E2375A5920077652D /* RegistrationControllers */,
 				1150932F2375A5A10077652D /* TabBarControllers */,
 			);
@@ -224,6 +227,7 @@
 			files = (
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
+				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
 				1150932B237590F60077652D /* SettingsViewController.swift in Sources */,
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,

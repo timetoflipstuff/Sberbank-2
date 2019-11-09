@@ -30,8 +30,9 @@ class SettingsViewController: UIViewController {
     
     @objc private func handleSignOut() {
         AppDelegate.defaults.set(false, forKey: "loggedIn")
-        navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        AppDelegate.shared.rootViewController.switchToLogout()
         tabBarController?.tabBar.isHidden = true
     }
 
 }
+

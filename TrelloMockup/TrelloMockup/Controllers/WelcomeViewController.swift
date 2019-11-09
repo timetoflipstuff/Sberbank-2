@@ -50,9 +50,9 @@ class WelcomeViewController: UIViewController {
     
     @objc private func handleStart() {
         if AppDelegate.defaults.bool(forKey: "loggedIn") {
-            navigationController?.setViewControllers([BaseTabBarController()], animated: true)
+            AppDelegate.shared.rootViewController.switchToMainScreen()
         } else {
-            navigationController?.pushViewController(RegistrationViewController(), animated: true)
+            AppDelegate.shared.rootViewController.switchToLogout()
         }
     }
 

@@ -34,7 +34,7 @@ class SignInViewController: UIViewController {
     
     @objc private func handleProceedRegistation() {
         AppDelegate.defaults.set(true, forKey: "loggedIn")
-        navigationController?.setViewControllers([BaseTabBarController()], animated: true)
+        AppDelegate.shared.rootViewController.switchToMainScreen()
     }
     
 }

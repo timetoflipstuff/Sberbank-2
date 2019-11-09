@@ -82,8 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				11509313237579C30077652D /* WelcomeViewController.swift */,
-				1150932E2375A5920077652D /* Registration */,
-				1150932F2375A5A10077652D /* TabBarElements */,
+				1150932E2375A5920077652D /* RegistrationControllers */,
+				1150932F2375A5A10077652D /* TabBarControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -106,17 +106,17 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		1150932E2375A5920077652D /* Registration */ = {
+		1150932E2375A5920077652D /* RegistrationControllers */ = {
 			isa = PBXGroup;
 			children = (
 				1150931A237580940077652D /* RegistrationViewController.swift */,
 				115093202375889A0077652D /* SignInViewController.swift */,
 				1150932223758AE90077652D /* SignUpViewController.swift */,
 			);
-			path = Registration;
+			path = RegistrationControllers;
 			sourceTree = "<group>";
 		};
-		1150932F2375A5A10077652D /* TabBarElements */ = {
+		1150932F2375A5A10077652D /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
 				11509324237590150077652D /* BaseTabBarController.swift */,
@@ -124,7 +124,7 @@
 				115093312375A5FE0077652D /* Notes */,
 				115093322375A60A0077652D /* Settings */,
 			);
-			path = TabBarElements;
+			path = TabBarControllers;
 			sourceTree = "<group>";
 		};
 		115093302375A5F50077652D /* Tasks */ = {

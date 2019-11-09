@@ -43,10 +43,6 @@ class WelcomeViewController: UIViewController {
         startButton.addTarget(self, action: #selector(handleStart), for: .touchUpInside)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
     
     @objc private func handleStart() {
         if AppDelegate.defaults.bool(forKey: "loggedIn") {

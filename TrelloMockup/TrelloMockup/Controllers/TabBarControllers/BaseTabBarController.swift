@@ -26,11 +26,5 @@ class BaseTabBarController: UITabBarController {
         viewControllers = [tasksViewController, notesViewController, settingsViewController]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    
 
 }

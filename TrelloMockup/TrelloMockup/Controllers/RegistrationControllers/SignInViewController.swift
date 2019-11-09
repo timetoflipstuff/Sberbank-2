@@ -27,11 +27,6 @@ class SignInViewController: UIViewController {
         proceedRegistrationButton.addTarget(self, action: #selector(handleProceedRegistation), for: .touchUpInside)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     @objc private func handleProceedRegistation() {
         AppDelegate.defaults.set(true, forKey: "loggedIn")
         AppDelegate.shared.rootViewController.switchToMainScreen()

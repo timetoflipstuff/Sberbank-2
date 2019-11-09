@@ -31,22 +31,10 @@ class RootViewController: UIViewController {
         
     }
     
-    func showLoginScreen() {
-        let new = UINavigationController(rootViewController: RegistrationViewController())
-        addChild(new)
-        new.view.frame = view.bounds
-        view.addSubview(new.view)
-        new.didMove(toParent: self)
-        current.willMove(toParent: nil)
-        current.view.removeFromSuperview()
-        current.removeFromParent()
-        current = new
-    }
     
     func switchToMainScreen() {
         let mainViewController = BaseTabBarController()
-        let mainScreen = UINavigationController(rootViewController: mainViewController)
-        animateFadeTransition(to: mainScreen)
+        animateFadeTransition(to: mainViewController)
     }
     
     func switchToLogout() {
@@ -64,7 +52,7 @@ class RootViewController: UIViewController {
             self.current.removeFromParent()
             new.didMove(toParent: self)
             self.current = new
-            completion?()  //1
+            completion?() 
         }
     }
     

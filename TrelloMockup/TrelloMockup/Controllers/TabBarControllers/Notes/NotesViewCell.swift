@@ -1,0 +1,40 @@
+//
+//  NotesViewCell.swift
+//  TrelloMockup
+//
+//  Created by Alex Mikhaylov on 10/11/2019.
+//  Copyright © 2019 Alexander. All rights reserved.
+//
+
+import UIKit
+
+class NotesViewCell: UITableViewCell {
+    
+    public static let reuseId = "noteCell"
+    
+    public let nameLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        nameLabel.frame = self.contentView.frame
+        nameLabel.center = self.contentView.center
+        
+        contentView.addSubview(nameLabel)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+    }
+
+}

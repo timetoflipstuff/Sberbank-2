@@ -21,6 +21,8 @@
 		1150932B237590F60077652D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932A237590F60077652D /* SettingsViewController.swift */; };
 		1150932D23759C4B0077652D /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddNoteViewController.swift */; };
 		1150933823771FEB0077652D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150933723771FEB0077652D /* RootViewController.swift */; };
+		E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D47623789F100073ADC2 /* NotesViewCell.swift */; };
+		E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		1150932A237590F60077652D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1150932C23759C4B0077652D /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		1150933723771FEB0077652D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		E663D47623789F100073ADC2 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
+		E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 			children = (
 				11509328237590B60077652D /* NotesViewController.swift */,
 				1150932C23759C4B0077652D /* AddNoteViewController.swift */,
+				E663D47623789F100073ADC2 /* NotesViewCell.swift */,
+				E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -233,10 +239,12 @@
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
 				1150931B237580940077652D /* RegistrationViewController.swift in Sources */,
+				E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */,
 				11509329237590B60077652D /* NotesViewController.swift in Sources */,
 				1150932D23759C4B0077652D /* AddNoteViewController.swift in Sources */,
 				115093212375889B0077652D /* SignInViewController.swift in Sources */,
 				11509327237590820077652D /* TasksViewController.swift in Sources */,
+				E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

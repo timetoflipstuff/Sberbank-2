@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddNewNoteViewControllerDelegate {
-    func didAddNote()
+    func didAddNote(name: String)
 }
 
 class AddNoteViewController: UIViewController {
@@ -42,7 +42,7 @@ class AddNoteViewController: UIViewController {
     }
     
     @objc private func handleSaveNote() {
-        self.delegate!.didAddNote()
+        self.delegate!.didAddNote(name: textView.text)
         textView.text = "Заметка сохранена"
         textView.textColor = .lightGray
     }

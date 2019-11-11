@@ -66,10 +66,6 @@ extension NotesViewController: UITableViewDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
 }
 
 extension NotesViewController: UITableViewDataSource {

@@ -19,6 +19,7 @@ class NotesViewCell: UITableViewCell {
         
         nameLabel.frame = self.contentView.frame
         nameLabel.center = self.contentView.center
+        nameLabel.center.x += 15
         
         contentView.addSubview(nameLabel)
     }
@@ -29,7 +30,6 @@ class NotesViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

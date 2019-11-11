@@ -13,7 +13,7 @@ class TasksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .orange
         navigationItem.title = "Задачи"
         navigationController?.navigationBar.prefersLargeTitles = true
     }

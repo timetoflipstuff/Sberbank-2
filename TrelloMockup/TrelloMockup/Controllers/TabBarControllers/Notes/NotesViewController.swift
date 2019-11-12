@@ -9,11 +9,7 @@
 import UIKit
 
 class NotesViewController: UIViewController {
-    
-    var expandedLabel: UILabel!
-    var indexOfCellToExpand: Int!
-    var selectedLabel: [String: AnyObject]!
-    
+
     var notes: [Note] = []
     
     let tableView = UITableView()

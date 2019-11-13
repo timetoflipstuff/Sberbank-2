@@ -47,6 +47,10 @@ class TasksViewController: UICollectionViewController {
 
         alert.addTextField()
         
+        alert.addAction(UIAlertAction(title: "Назад", style: .default, handler: { [] (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
             let columnName = textField?.text

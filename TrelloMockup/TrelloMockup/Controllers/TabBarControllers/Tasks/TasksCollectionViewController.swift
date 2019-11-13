@@ -52,6 +52,10 @@ class TasksCollectionViewController: UICollectionViewController {
             
             alert.addTextField()
             
+            alert.addAction(UIAlertAction(title: "Назад", style: .default, handler: { [] (_) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert?.textFields![0]
                 let taskName = textField?.text
@@ -61,6 +65,12 @@ class TasksCollectionViewController: UICollectionViewController {
                 
             }))
             
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Задача", message: tasks[indexPath.row].name, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [] (_) in
+                self.dismiss(animated: true, completion: nil)
+            }))
             self.present(alert, animated: true, completion: nil)
         }
     

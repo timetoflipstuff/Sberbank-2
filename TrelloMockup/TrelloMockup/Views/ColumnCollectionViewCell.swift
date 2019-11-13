@@ -33,7 +33,7 @@ class ColumnCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = 36
+        layer.cornerRadius = 16
         layer.masksToBounds = true
         
         addSubview(columnName)

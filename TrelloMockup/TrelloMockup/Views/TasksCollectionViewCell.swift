@@ -26,7 +26,7 @@ class TasksCollectionViewCell: UICollectionViewCell {
         taskName.frame = self.contentView.frame
         taskName.center = self.contentView.center
         
-        layer.cornerRadius = 36
+        layer.cornerRadius = 6
         
         addSubview(taskName)
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1149C73E237B612600401FC6 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149C73D237B612600401FC6 /* Column.swift */; };
 		115093022375793C0077652D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115093012375793C0077652D /* AppDelegate.swift */; };
 		115093092375793F0077652D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115093082375793F0077652D /* Assets.xcassets */; };
 		1150930C2375793F0077652D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1150930A2375793F0077652D /* LaunchScreen.storyboard */; };
@@ -16,22 +17,21 @@
 		115093212375889B0077652D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115093202375889A0077652D /* SignInViewController.swift */; };
 		1150932323758AE90077652D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932223758AE90077652D /* SignUpViewController.swift */; };
 		11509325237590150077652D /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509324237590150077652D /* BaseTabBarController.swift */; };
-		11509327237590820077652D /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509326237590820077652D /* TasksViewController.swift */; };
+		11509327237590820077652D /* TasksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509326237590820077652D /* TasksCollectionViewController.swift */; };
 		11509329237590B60077652D /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509328237590B60077652D /* NotesViewController.swift */; };
 		1150932B237590F60077652D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932A237590F60077652D /* SettingsViewController.swift */; };
-		1150932D23759C4B0077652D /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddNoteViewController.swift */; };
+		1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddItemViewController.swift */; };
 		1150933823771FEB0077652D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150933723771FEB0077652D /* RootViewController.swift */; };
 		E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D47623789F100073ADC2 /* NotesViewCell.swift */; };
 		E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */; };
-		E663D485237AC7C00073ADC2 /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* FirstCollectionViewCell.swift */; };
+		E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */; };
 		E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */; };
 		E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */; };
-		E663D48B237AC7FE0073ADC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48A237AC7FE0073ADC2 /* ViewController.swift */; };
-		E663D48D237ACDAD0073ADC2 /* AddColumnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48C237ACDAD0073ADC2 /* AddColumnVC.swift */; };
-		E663D48F237AE7DC0073ADC2 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48E237AE7DC0073ADC2 /* AddTaskVC.swift */; };
+		E663D48B237AC7FE0073ADC2 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1149C73D237B612600401FC6 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		115092FE2375793C0077652D /* TrelloMockup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrelloMockup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115093012375793C0077652D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		115093082375793F0077652D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,19 +43,17 @@
 		115093202375889A0077652D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1150932223758AE90077652D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		11509324237590150077652D /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		11509326237590820077652D /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		11509326237590820077652D /* TasksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCollectionViewController.swift; sourceTree = "<group>"; };
 		11509328237590B60077652D /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		1150932A237590F60077652D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		1150932C23759C4B0077652D /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		1150932C23759C4B0077652D /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		1150933723771FEB0077652D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E663D47623789F100073ADC2 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
 		E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCellController.swift; sourceTree = "<group>"; };
-		E663D484237AC7C00073ADC2 /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = "<group>"; };
+		E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnCollectionViewCell.swift; sourceTree = "<group>"; };
 		E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCollectionViewCell.swift; sourceTree = "<group>"; };
 		E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
-		E663D48A237AC7FE0073ADC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E663D48C237ACDAD0073ADC2 /* AddColumnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddColumnVC.swift; sourceTree = "<group>"; };
-		E663D48E237AE7DC0073ADC2 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
+		E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +67,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1149C73C237B0A4D00401FC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */,
+				E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */,
+				E663D47623789F100073ADC2 /* NotesViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1149C73F237B612E00401FC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1149C73D237B612600401FC6 /* Column.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		115092F52375793C0077652D = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +104,9 @@
 		115093002375793C0077652D /* TrelloMockup */ = {
 			isa = PBXGroup;
 			children = (
+				1149C73F237B612E00401FC6 /* Model */,
 				1150931923757FF20077652D /* Helpers */,
+				1149C73C237B0A4D00401FC6 /* Views */,
 				11509315237579D50077652D /* Controllers */,
 				11509316237579DA0077652D /* Supporting Files */,
 				1150930D2375793F0077652D /* Info.plist */,
@@ -121,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				1150931C237582830077652D /* Extensions.swift */,
+				E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -149,13 +168,8 @@
 		115093302375A5F50077652D /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				11509326237590820077652D /* TasksViewController.swift */,
-				E663D48E237AE7DC0073ADC2 /* AddTaskVC.swift */,
-				E663D484237AC7C00073ADC2 /* FirstCollectionViewCell.swift */,
-				E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */,
-				E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */,
-				E663D48A237AC7FE0073ADC2 /* ViewController.swift */,
-				E663D48C237ACDAD0073ADC2 /* AddColumnVC.swift */,
+				E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */,
+				11509326237590820077652D /* TasksCollectionViewController.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -164,8 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				11509328237590B60077652D /* NotesViewController.swift */,
-				1150932C23759C4B0077652D /* AddNoteViewController.swift */,
-				E663D47623789F100073ADC2 /* NotesViewCell.swift */,
+				1150932C23759C4B0077652D /* AddItemViewController.swift */,
 				E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */,
 			);
 			path = Notes;
@@ -249,25 +262,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E663D485237AC7C00073ADC2 /* FirstCollectionViewCell.swift in Sources */,
+				E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */,
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
 				E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */,
 				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
 				1150932B237590F60077652D /* SettingsViewController.swift in Sources */,
 				E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */,
-				E663D48F237AE7DC0073ADC2 /* AddTaskVC.swift in Sources */,
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
 				1150931B237580940077652D /* RegistrationViewController.swift in Sources */,
 				E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */,
-				E663D48B237AC7FE0073ADC2 /* ViewController.swift in Sources */,
+				E663D48B237AC7FE0073ADC2 /* TasksViewController.swift in Sources */,
 				11509329237590B60077652D /* NotesViewController.swift in Sources */,
-				1150932D23759C4B0077652D /* AddNoteViewController.swift in Sources */,
-				E663D48D237ACDAD0073ADC2 /* AddColumnVC.swift in Sources */,
+				1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */,
+				1149C73E237B612600401FC6 /* Column.swift in Sources */,
 				115093212375889B0077652D /* SignInViewController.swift in Sources */,
-				11509327237590820077652D /* TasksViewController.swift in Sources */,
+				11509327237590820077652D /* TasksCollectionViewController.swift in Sources */,
 				E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

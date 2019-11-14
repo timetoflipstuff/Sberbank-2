@@ -9,11 +9,7 @@
 import UIKit
 
 class NotesViewController: UIViewController {
-    
-    var expandedLabel: UILabel!
-    var indexOfCellToExpand: Int!
-    var selectedLabel: [String: AnyObject]!
-    
+
     var notes: [Note] = []
     
     let tableView = UITableView()
@@ -37,7 +33,7 @@ class NotesViewController: UIViewController {
     }
     
     @objc private func handleAddNote() {
-        let controller = AddNoteViewController()
+        let controller = AddItemViewController()
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -45,13 +41,12 @@ class NotesViewController: UIViewController {
 }
 
 
-extension NotesViewController: AddNewNoteViewControllerDelegate {
+extension NotesViewController: AddItemDelegate {
     
-    func didAddNote(name: String) {
+    func didAddItem(name: String) {
         notes.append(Note(name: name))
         navigationItem.title = "Заметки: \(notes.count)"
         tableView.reloadData()
-        //tableView.insertRows(at: IndexPath.row, with: UITableView.RowAnimation) //good when you just need to add a couple of rows
     }
     
 }

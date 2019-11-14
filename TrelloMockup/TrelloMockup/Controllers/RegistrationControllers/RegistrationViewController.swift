@@ -13,7 +13,6 @@ class RegistrationViewController: UIViewController {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        //iv.contentMode = UIView.ContentMode.scaleAspectFit
         return iv
     }()
     

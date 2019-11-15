@@ -1,11 +1,3 @@
-//
-//  NotesViewCell.swift
-//  TrelloMockup
-//
-//  Created by Alex Mikhaylov on 10/11/2019.
-//  Copyright © 2019 Alexander. All rights reserved.
-//
-
 import UIKit
 
 class NotesViewCell: UITableViewCell {

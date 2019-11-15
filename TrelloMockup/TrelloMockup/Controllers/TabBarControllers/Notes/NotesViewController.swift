@@ -1,16 +1,11 @@
-//
-//  NotesViewController.swift
-//  TrelloMockup
-//
-//  Created by Alexander on 08.11.2019.
-//  Copyright © 2019 Alexander. All rights reserved.
-//
 
 import UIKit
 
 class NotesViewController: UIViewController {
 
     var notes: [Note] = []
+    
+    private let dataSource: Net = Firebase()
     
     let tableView = UITableView()
 
@@ -30,6 +25,13 @@ class NotesViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.register(NotesViewCell.self, forCellReuseIdentifier: NotesViewCell.reuseId)
+        
+        dataSource.getNotes(){ receivedNotes in
+            self.notes = receivedNotes
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @objc private func handleAddNote() {
@@ -37,18 +39,15 @@ class NotesViewController: UIViewController {
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
-
 }
-
 
 extension NotesViewController: AddItemDelegate {
     
     func didAddItem(name: String) {
-        notes.append(Note(name: name))
+        notes.append(Note(name: name, imgURL: nil))
         navigationItem.title = "Заметки: \(notes.count)"
         tableView.reloadData()
     }
-    
 }
 
 extension NotesViewController: UITableViewDelegate {
@@ -60,7 +59,6 @@ extension NotesViewController: UITableViewDelegate {
         controller.innerText = notes[indexPath.row].name
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 
 extension NotesViewController: UITableViewDataSource {
@@ -77,16 +75,5 @@ extension NotesViewController: UITableViewDataSource {
         cell.nameLabel.text = note.name
         
         return cell
-    }
-    
-
-}
-
-class Note {
-    var name = ""
-    
-    convenience init(name: String) {
-        self.init()
-        self.name = name
     }
 }

@@ -22,6 +22,9 @@
 		1150932B237590F60077652D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932A237590F60077652D /* SettingsViewController.swift */; };
 		1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddItemViewController.swift */; };
 		1150933823771FEB0077652D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150933723771FEB0077652D /* RootViewController.swift */; };
+		841243AA237F1F3C00B5FD68 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243A9237F1F3C00B5FD68 /* Net.swift */; };
+		841243AC237F20D400B5FD68 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243AB237F20D400B5FD68 /* Firebase.swift */; };
+		841243AE237F224000B5FD68 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243AD237F224000B5FD68 /* Note.swift */; };
 		E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D47623789F100073ADC2 /* NotesViewCell.swift */; };
 		E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */; };
 		E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */; };
@@ -48,6 +51,9 @@
 		1150932A237590F60077652D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1150932C23759C4B0077652D /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		1150933723771FEB0077652D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		841243A9237F1F3C00B5FD68 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		841243AB237F20D400B5FD68 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		841243AD237F224000B5FD68 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E663D47623789F100073ADC2 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
 		E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCellController.swift; sourceTree = "<group>"; };
 		E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -81,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				1149C73D237B612600401FC6 /* Column.swift */,
+				841243AD237F224000B5FD68 /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +111,7 @@
 		115093002375793C0077652D /* TrelloMockup */ = {
 			isa = PBXGroup;
 			children = (
+				841243A8237F1F0000B5FD68 /* Services */,
 				1149C73F237B612E00401FC6 /* Model */,
 				1150931923757FF20077652D /* Helpers */,
 				1149C73C237B0A4D00401FC6 /* Views */,
@@ -192,6 +200,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		841243A8237F1F0000B5FD68 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				841243A9237F1F3C00B5FD68 /* Net.swift */,
+				841243AB237F20D400B5FD68 /* Firebase.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,16 +279,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841243AC237F20D400B5FD68 /* Firebase.swift in Sources */,
 				E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */,
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
 				E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */,
 				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
 				1150932B237590F60077652D /* SettingsViewController.swift in Sources */,
+				841243AE237F224000B5FD68 /* Note.swift in Sources */,
 				E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */,
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
+				841243AA237F1F3C00B5FD68 /* Net.swift in Sources */,
 				1150931B237580940077652D /* RegistrationViewController.swift in Sources */,
 				E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */,
 				E663D48B237AC7FE0073ADC2 /* TasksViewController.swift in Sources */,
@@ -421,13 +441,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46NZ6QG8YF;
 				INFOPLIST_FILE = TrelloMockup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.TrelloMockup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -439,13 +460,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46NZ6QG8YF;
 				INFOPLIST_FILE = TrelloMockup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.TrelloMockup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

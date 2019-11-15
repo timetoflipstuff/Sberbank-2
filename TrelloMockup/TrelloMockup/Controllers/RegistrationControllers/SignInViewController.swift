@@ -7,29 +7,56 @@
 //
 
 import UIKit
+import WebKit
 
 class SignInViewController: UIViewController {
     
-    let proceedRegistrationButton = UIButton(title: "Нажмите на кнопку", fontSize: 30, cornerRadius: 24)
+    let webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        navigationItem.title = "Регистрация"
-        view.addSubview(proceedRegistrationButton)
-        proceedRegistrationButton.titleLabel?.numberOfLines = 0
-        proceedRegistrationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        proceedRegistrationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        proceedRegistrationButton.widthAnchor.constraint(equalToConstant: view.frame.width / 1.5).isActive = true
-        proceedRegistrationButton.heightAnchor.constraint(equalToConstant: 128).isActive = true
         
-        proceedRegistrationButton.addTarget(self, action: #selector(handleProceedRegistation), for: .touchUpInside)
+        view.addSubview(webView)
+        webView.frame = view.frame
+        webView.navigationDelegate = self
+        
+        let request = NetworkManager.shared.getAuthRequest()
+        
+        webView.load(request)
+        webView.allowsBackForwardNavigationGestures = true
+        
     }
     
-    @objc private func handleProceedRegistation() {
-        AppDelegate.defaults.set(true, forKey: "loggedIn")
-        AppDelegate.shared.rootViewController.switchToMainScreen()
-    }
+    
     
 }
+
+
+extension SignInViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let html = html as? String else { return }
+            
+            //TODO: Add activity indicator
+            if let token = html.slice(from: "<pre>", to: "</pre>") {
+                AppDelegate.defaults.set(token, forKey: "token")
+                AppDelegate.shared.rootViewController.switchToMainScreen()
+            }
+            
+            
+        }
+        
+        
+    }
+}
+
+

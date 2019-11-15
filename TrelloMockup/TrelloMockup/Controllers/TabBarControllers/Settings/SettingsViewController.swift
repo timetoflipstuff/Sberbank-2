@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func handleSignOut() {
-        AppDelegate.defaults.set(false, forKey: "loggedIn")
+        AppDelegate.defaults.removeObject(forKey: "token")
         AppDelegate.shared.rootViewController.switchToLogout()
         tabBarController?.tabBar.isHidden = true
     }

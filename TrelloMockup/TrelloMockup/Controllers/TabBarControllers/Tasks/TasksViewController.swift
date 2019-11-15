@@ -11,6 +11,11 @@ import UIKit
 class TasksViewController: UICollectionViewController {
     
     var columns: [Column] = []
+    var boards: [Board] = []
+    var lists: [List] = []
+    var cards: [Card] = []
+    
+    var boardId = String()
     
     private let headerId = "headerId"
     
@@ -20,23 +25,59 @@ class TasksViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.decelerationRate = .fast
         
+        NetworkManager.shared.getBoards { (boards) in
+            guard let boards = boards else { return }
+            self.boards = boards
+            for board in boards {
+                //MARK: В прилоложении не реализован механизм множества досок.
+                if board.name == "Keep Team Info Organized" {
+                    self.boardId = board.id
+                    print(self.boardId)
+                }
+            }
+            
+            NetworkManager.shared.getLists(board: self.boardId, completion: { (lists) in
+                guard let lists = lists else { return }
+                
+                self.lists = lists
+                
+                for (index, list) in lists.enumerated() {
+                    NetworkManager.shared.getCards(list: list.idBoard, completion: { (cards) in
+                        self.cards = cards ?? []
+                        
+                        if index == lists.count - 1 {
+                            DispatchQueue.main.async {
+                                self.collectionView.reloadData()
+                            }
+                        }
+                        
+                    })
+                }
+                
+                
+            })
+            
+            
+        }
+        
         
         navigationItem.title = "Задачи"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddColumn))
         
-        collectionView.register(ColumnCollectionViewCell.self, forCellWithReuseIdentifier: ColumnCollectionViewCell.reuseId)
+        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.reuseId)
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return columns.count
+        
+        return lists.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColumnCollectionViewCell.reuseId, for: indexPath) as! ColumnCollectionViewCell
-        cell.columnName.text = "     \(columns[indexPath.row].name)"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reuseId, for: indexPath) as! CardCollectionViewCell
+        cell.columnName.text = "     \(lists[indexPath.row].name)"
         return cell
     }
     
@@ -44,7 +85,7 @@ class TasksViewController: UICollectionViewController {
     @objc private func handleAddColumn() {
         
         let alert = UIAlertController(title: "Введите название колонки", message: "", preferredStyle: .alert)
-
+        
         alert.addTextField()
         
         alert.addAction(UIAlertAction(title: "Назад", style: .default, handler: { [] (_) in
@@ -58,12 +99,14 @@ class TasksViewController: UICollectionViewController {
             self.columns.append(Column(name: columnName ?? ""))
             self.collectionView.reloadData()
             
+            self.collectionView.scrollToItem(at: IndexPath(row: self.columns.count - 1, section: 0), at: .right, animated: true)
             
         }))
         
         self.present(alert, animated: true, completion: nil)
         
     }
+    
     
 }
 
@@ -76,7 +119,7 @@ extension TasksViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 20, bottom: 0, right: 0)
+        return .init(top: 0, left: 20, bottom: 0, right: 20)
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
     
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false

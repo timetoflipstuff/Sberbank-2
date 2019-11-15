@@ -5,10 +5,19 @@ class NotesViewController: UIViewController {
 
     var notes: [Note] = []
     
+    let tableView = UITableView()
+    
     private let dataSource: Net = Firebase()
     
-    let tableView = UITableView()
-
+    private let loadSpinner: UIActivityIndicatorView = {
+        let loginSpinner = UIActivityIndicatorView()
+        loginSpinner.color = .orange
+        loginSpinner.transform = CGAffineTransform(scaleX: 4, y: 4)
+        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
+        loginSpinner.hidesWhenStopped = true
+        return loginSpinner
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Заметки: \(notes.count)"
@@ -21,14 +30,23 @@ class NotesViewController: UIViewController {
         tableView.frame = view.frame
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         
         view.addSubview(tableView)
+        tableView.alpha = 0
         
         tableView.register(NotesViewCell.self, forCellReuseIdentifier: NotesViewCell.reuseId)
         
+        view.addSubview(loadSpinner)
+        loadSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loadSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        loadSpinner.startAnimating()
         dataSource.getNotes(){ receivedNotes in
             self.notes = receivedNotes
             DispatchQueue.main.async {
+                self.loadSpinner.stopAnimating()
+                self.tableView.alpha = 1
                 self.tableView.reloadData()
             }
         }

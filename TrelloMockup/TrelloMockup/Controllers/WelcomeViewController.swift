@@ -45,7 +45,7 @@ class WelcomeViewController: UIViewController {
     
     
     @objc private func handleStart() {
-        if AppDelegate.defaults.bool(forKey: "loggedIn") {
+        if AppDelegate.defaults.value(forKey: "token") != nil {
             AppDelegate.shared.rootViewController.switchToMainScreen()
         } else {
             AppDelegate.shared.rootViewController.switchToLogout()

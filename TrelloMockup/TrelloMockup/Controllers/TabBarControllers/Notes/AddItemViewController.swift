@@ -42,17 +42,9 @@ class AddItemViewController: UIViewController {
     }
     
     @objc private func handleSave() {
-        if textView.textColor != .black || textView.text == "" {
-            let keyPath = "position.x"
-            let multistep = CAKeyframeAnimation(keyPath: keyPath)
-            multistep.values = [textView.center.x, textView.center.x - 10, textView.center.x + 10, textView.center.x - 10, textView.center.x + 10, textView.center.x]
-            multistep.keyTimes = [0, 0.1, 0.2, 0.3, 0.4, 0.5]
-            multistep.duration = 1
-            textView.layer.add(multistep, forKey: "shake")
-        } else {
-            self.delegate?.didAddItem(name: textView.text)
-            navigationController?.popViewController(animated: true)
-        }
+        self.delegate?.didAddItem(name: textView.text)
+        textView.text = "Сохранено"
+        textView.textColor = .lightGray
     }
     
 }

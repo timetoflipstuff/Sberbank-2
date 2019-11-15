@@ -26,7 +26,7 @@ class NotesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddNote))
-
+        
         tableView.frame = view.frame
         tableView.delegate = self
         tableView.dataSource = self

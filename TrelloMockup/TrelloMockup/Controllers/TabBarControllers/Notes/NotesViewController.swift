@@ -7,8 +7,8 @@ class NotesViewController: UIViewController {
     
     let tableView = UITableView()
     
-    private let dataSource: Net = Firebase()
-    private let cloudSaver: CloudSaver = Firebase()
+    private let dataSource: NetFetcher = Firebase()
+    private let cloudSaver: NetSaver = Firebase()
     
     private let loadSpinner: UIActivityIndicatorView = {
         let loginSpinner = UIActivityIndicatorView()
@@ -67,7 +67,7 @@ extension NotesViewController: AddItemDelegate {
         navigationItem.title = "Заметки: \(uiNotes.count)"
         tableView.reloadData()
         //TODO: send all notes to cloud
-        cloudSaver.saveToCloud([])
+        cloudSaver.pushNotesToNet(uiNotes.compactMap(){Note(name: $0.name, imgURL: nil)})
     }
 }
 

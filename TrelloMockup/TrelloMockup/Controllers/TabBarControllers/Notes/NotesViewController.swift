@@ -3,7 +3,7 @@ import UIKit
 
 class NotesViewController: UIViewController {
 
-    var notes: [Note] = []
+    var uiNotes: [UINote] = []
     
     let tableView = UITableView()
     
@@ -21,7 +21,7 @@ class NotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Заметки: \(notes.count)"
+        navigationItem.title = "Заметки: \(uiNotes.count)"
         
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -44,7 +44,7 @@ class NotesViewController: UIViewController {
         
         loadSpinner.startAnimating()
         dataSource.getNotes(){ receivedNotes in
-            self.notes = receivedNotes
+            self.uiNotes = receivedNotes.compactMap(){UINote($0)}
             DispatchQueue.main.async {
                 self.loadSpinner.stopAnimating()
                 self.tableView.alpha = 1
@@ -62,11 +62,12 @@ class NotesViewController: UIViewController {
 
 extension NotesViewController: AddItemDelegate {
     
-    public func didAddItem(name: String) {
-        notes.append(Note(name: name, imgURL: nil))
-        navigationItem.title = "Заметки: \(notes.count)"
+    public func didAddItem(_ uiNote: UINote) {//(name: String) {
+        uiNotes.append(uiNote)
+        navigationItem.title = "Заметки: \(uiNotes.count)"
         tableView.reloadData()
-        cloudSaver.saveToCloud(notes)
+        //TODO: send all notes to cloud
+        cloudSaver.saveToCloud([])
     }
 }
 
@@ -74,19 +75,19 @@ extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         tableView.deselectRow(at: indexPath, animated: true)
         let controller = NotesViewCellController()
-        controller.innerText = notes[indexPath.row].name
+        controller.innerText = uiNotes[indexPath.row].name
         navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return uiNotes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NotesViewCell.reuseId, for: indexPath) as! NotesViewCell
-        cell.setupUI(notes[indexPath.row])
+        cell.setupUI(uiNotes[indexPath.row])
         return cell
     }
     

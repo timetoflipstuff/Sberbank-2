@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddItemDelegate {
-    func didAddItem(name: String)
+    func didAddItem(_: UINote)
 }
 
 class AddItemViewController: UIViewController{
@@ -41,7 +41,7 @@ class AddItemViewController: UIViewController{
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(handleSave))
         
-        titleImg = UIImageView(image: UIImage(named: "addInteractional"))
+        titleImg = UIImageView(image: UIImage(named: "note"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +63,7 @@ class AddItemViewController: UIViewController{
     }
     
     @objc private func handleSave() {
-        self.delegate?.didAddItem(name: textView.text)
+        self.delegate?.didAddItem(UINote(name: textView.text, img: titleImg.image))
         textView.text = "Сохранено"
         textView.textColor = .lightGray
         

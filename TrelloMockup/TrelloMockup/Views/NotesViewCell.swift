@@ -10,10 +10,12 @@ class NotesViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        nameLable.font = .systemFont(ofSize: 20)
+        
         imgView.backgroundColor = .orange
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
-        imgView.contentMode = .scaleAspectFit        
+        imgView.contentMode = .scaleAspectFit
         
         contentView.addSubview(imgView)
         contentView.addSubview(nameLable)
@@ -31,9 +33,9 @@ class NotesViewCell: UITableViewCell {
         nameLable.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: 8).isActive = true
     }
     
-    public func setupUI(_ note: Note){
-        nameLable.text = note.name
-        imgView.image = UIImage(named: "notes")
+    public func setupUI(_ uiNote: UINote){
+        nameLable.text = uiNote.name
+        imgView.image = uiNote.img
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

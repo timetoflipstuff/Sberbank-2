@@ -8,6 +8,7 @@ class NotesViewController: UIViewController {
     let tableView = UITableView()
     
     private let dataSource: Net = Firebase()
+    private let cloudSaver: CloudSaver = Firebase()
     
     private let loadSpinner: UIActivityIndicatorView = {
         let loginSpinner = UIActivityIndicatorView()
@@ -61,18 +62,17 @@ class NotesViewController: UIViewController {
 
 extension NotesViewController: AddItemDelegate {
     
-    func didAddItem(name: String) {
+    public func didAddItem(name: String) {
         notes.append(Note(name: name, imgURL: nil))
         navigationItem.title = "Заметки: \(notes.count)"
         tableView.reloadData()
+        cloudSaver.saveToCloud(notes)
     }
 }
 
 extension NotesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         tableView.deselectRow(at: indexPath, animated: true)
-        
         let controller = NotesViewCellController()
         controller.innerText = notes[indexPath.row].name
         navigationController?.pushViewController(controller, animated: true)
@@ -85,13 +85,12 @@ extension NotesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: NotesViewCell.reuseId, for: indexPath) as! NotesViewCell
-        
-        let note = notes[indexPath.row]
-        
-        cell.nameLabel.text = note.name
-        
+        cell.setupUI(notes[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }

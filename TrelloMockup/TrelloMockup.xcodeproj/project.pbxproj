@@ -25,6 +25,8 @@
 		841243AA237F1F3C00B5FD68 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243A9237F1F3C00B5FD68 /* Net.swift */; };
 		841243AC237F20D400B5FD68 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243AB237F20D400B5FD68 /* Firebase.swift */; };
 		841243AE237F224000B5FD68 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841243AD237F224000B5FD68 /* Note.swift */; };
+		8413673B23818D7B004A13D0 /* CloudSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413673A23818D7B004A13D0 /* CloudSaver.swift */; };
+		841C56BB2381AC0400C98EB2 /* UINote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C56BA2381AC0400C98EB2 /* UINote.swift */; };
 		E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D47623789F100073ADC2 /* NotesViewCell.swift */; };
 		E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */; };
 		E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */; };
@@ -54,6 +56,8 @@
 		841243A9237F1F3C00B5FD68 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		841243AB237F20D400B5FD68 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		841243AD237F224000B5FD68 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		8413673A23818D7B004A13D0 /* CloudSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSaver.swift; sourceTree = "<group>"; };
+		841C56BA2381AC0400C98EB2 /* UINote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINote.swift; sourceTree = "<group>"; };
 		E663D47623789F100073ADC2 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
 		E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCellController.swift; sourceTree = "<group>"; };
 		E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			children = (
 				1149C73D237B612600401FC6 /* Column.swift */,
 				841243AD237F224000B5FD68 /* Note.swift */,
+				841C56BA2381AC0400C98EB2 /* UINote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				841243A9237F1F3C00B5FD68 /* Net.swift */,
+				8413673A23818D7B004A13D0 /* CloudSaver.swift */,
 				841243AB237F20D400B5FD68 /* Firebase.swift */,
 			);
 			path = Services;
@@ -282,6 +288,7 @@
 				841243AC237F20D400B5FD68 /* Firebase.swift in Sources */,
 				E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */,
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
+				8413673B23818D7B004A13D0 /* CloudSaver.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
 				E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */,
 				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
@@ -289,6 +296,7 @@
 				841243AE237F224000B5FD68 /* Note.swift in Sources */,
 				E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */,
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
+				841C56BB2381AC0400C98EB2 /* UINote.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
 				841243AA237F1F3C00B5FD68 /* Net.swift in Sources */,
@@ -439,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46NZ6QG8YF;
+				DEVELOPMENT_TEAM = 278LBPAGN9;
 				INFOPLIST_FILE = TrelloMockup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -458,7 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46NZ6QG8YF;
+				DEVELOPMENT_TEAM = 278LBPAGN9;
 				INFOPLIST_FILE = TrelloMockup/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

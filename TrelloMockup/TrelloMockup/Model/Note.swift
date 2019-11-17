@@ -1,4 +1,5 @@
-class Note: Decodable {
+
+class Note: Codable {
     
     var name = ""
     var imgURL: String?

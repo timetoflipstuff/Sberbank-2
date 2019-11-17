@@ -13,7 +13,6 @@ protocol AddItemDelegate {
 }
 
 class AddItemViewController: UIViewController{
-    
     let placeholder = "Введите текст"
     var delegate: AddItemDelegate?
     
@@ -26,7 +25,7 @@ class AddItemViewController: UIViewController{
         return textView
     }()
     
-    private var titleImg = UIImageView()
+    private var titleImg: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +40,12 @@ class AddItemViewController: UIViewController{
         textView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(handleSave))
+        
+        titleImg = UIImageView(image: UIImage(named: "addInteractional"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let navHeight = navigationController?.navigationBar.frame.size.height ?? 70
-        titleImg.image = UIImage(named: "addInteractional")
         titleImg.frame = CGRect(x: 0, y: 0, width: navHeight*0.8, height: navHeight*0.8)
         titleImg.center = CGPoint(x: view.bounds.midX, y: navHeight/2)
         titleImg.layer.cornerRadius = titleImg.bounds.maxX/4
@@ -66,16 +66,17 @@ class AddItemViewController: UIViewController{
         self.delegate?.didAddItem(name: textView.text)
         textView.text = "Сохранено"
         textView.textColor = .lightGray
+        
     }
     
     @objc private func handleImgEdition() {
         print("want to change Img")
+        
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = UIImagePickerController.SourceType.photoLibrary;
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
         picker.allowsEditing = false
-        self.present(picker, animated: true)
-        
+        self.present(picker, animated: true, completion: nil)
     }
     
 }
@@ -97,15 +98,14 @@ extension AddItemViewController: UITextViewDelegate {
 }
 
 extension AddItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[.originalImage] as? UIImage {
             
-            let selectedImage : UIImage = image
+            let selectedImage : UIImage = image // вот картинка
             titleImg.image = selectedImage
-//            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
     }
-
 }
 

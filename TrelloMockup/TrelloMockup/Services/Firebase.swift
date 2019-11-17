@@ -1,7 +1,7 @@
 
 import UIKit
 
-class Firebase: Net {
+class Firebase: Net{
     
     private let apiKey = "AIzaSyDFhpl1x3KlfT_StXa4JVOdzwgn5KIOSSg"
     private var notesLink: String {
@@ -33,5 +33,11 @@ class Firebase: Net {
             }
         })
         task.resume()
+    }
+}
+
+extension Firebase: CloudSaver {
+    func saveToCloud(_ notes: [Note]){
+        
     }
 }

@@ -14,9 +14,9 @@ class NotesViewCellController: UIViewController {
     
     lazy var textView: UITextView = {
         let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = innerText
         textView.font = .systemFont(ofSize: 24)
+        
         return textView
     }()
     
@@ -25,11 +25,13 @@ class NotesViewCellController: UIViewController {
         
         view.backgroundColor = .white
         view.addSubview(textView)
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
         textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         textView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         textView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
-    
 }
 

@@ -4,18 +4,37 @@ class NotesViewCell: UITableViewCell {
     
     public static let reuseId = "noteCell"
     
-    public let nameLabel = UILabel()
+    private let nameLable = UILabel()
+    private var imgView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        nameLabel.frame = self.contentView.frame
-        nameLabel.center = self.contentView.center
-        nameLabel.center.x += 15
+        imgView.backgroundColor = .orange
+        imgView.layer.cornerRadius = 5
+        imgView.layer.masksToBounds = true
+        imgView.contentMode = .scaleAspectFit        
         
-        contentView.addSubview(nameLabel)
+        contentView.addSubview(imgView)
+        contentView.addSubview(nameLable)
+        
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
+        imgView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
+        imgView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        imgView.widthAnchor.constraint(equalTo: imgView.heightAnchor, multiplier: 1).isActive = true
+        
+        nameLable.translatesAutoresizingMaskIntoConstraints = false
+        nameLable.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
+        nameLable.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
+        nameLable.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: 8).isActive = true
+        nameLable.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: 8).isActive = true
     }
     
+    public func setupUI(_ note: Note){
+        nameLable.text = note.name
+        imgView.image = UIImage(named: "notes")
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

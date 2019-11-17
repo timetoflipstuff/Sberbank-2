@@ -3,9 +3,10 @@ import UIKit
 
 class NotesViewController: UIViewController {
 
-    var uiNotes: [UINote] = []
+    private var notes = [Note]()
+    private var uiNotes = [UINote]()
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
     private let dataSource: NetFetcher = Firebase()
     private let cloudSaver: NetSaver = Firebase()
@@ -44,6 +45,7 @@ class NotesViewController: UIViewController {
         
         loadSpinner.startAnimating()
         dataSource.getNotes(){ receivedNotes in
+            self.notes = receivedNotes
             self.uiNotes = receivedNotes.compactMap(){UINote($0)}
             DispatchQueue.main.async {
                 self.loadSpinner.stopAnimating()
@@ -62,12 +64,13 @@ class NotesViewController: UIViewController {
 
 extension NotesViewController: AddItemDelegate {
     
-    public func didAddItem(_ uiNote: UINote) {//(name: String) {
+    public func didAddItem(_ uiNote: UINote) {
         uiNotes.append(uiNote)
+        let note = Note(name: uiNote.name, imgURL: nil, id: nil)
+        notes.append(note)
         navigationItem.title = "Заметки: \(uiNotes.count)"
         tableView.reloadData()
-        //TODO: send all notes to cloud
-        cloudSaver.pushNotesToNet(uiNotes.compactMap(){Note(name: $0.name, imgURL: nil)})
+        cloudSaver.pushNotesToNet(notes)
     }
 }
 

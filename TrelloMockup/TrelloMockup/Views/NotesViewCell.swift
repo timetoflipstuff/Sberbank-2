@@ -15,7 +15,7 @@ class NotesViewCell: UITableViewCell {
         imgView.backgroundColor = .orange
         imgView.layer.cornerRadius = 5
         imgView.layer.masksToBounds = true
-        imgView.contentMode = .scaleAspectFit
+        imgView.contentMode = .scaleAspectFit        
         
         contentView.addSubview(imgView)
         contentView.addSubview(nameLable)

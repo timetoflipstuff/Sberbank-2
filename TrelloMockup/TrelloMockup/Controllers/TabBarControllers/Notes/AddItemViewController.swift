@@ -66,7 +66,7 @@ class AddItemViewController: UIViewController{
         self.delegate?.didAddItem(UINote(name: textView.text, img: titleImg.image))
         textView.text = "Сохранено"
         textView.textColor = .lightGray
-        
+        navigationController?.popViewController(animated: true)        
     }
     
     @objc private func handleImgEdition() {

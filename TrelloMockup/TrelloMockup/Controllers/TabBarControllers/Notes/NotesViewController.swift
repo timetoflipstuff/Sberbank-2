@@ -81,6 +81,29 @@ extension NotesViewController: UITableViewDelegate {
         controller.innerText = uiNotes[indexPath.row].name
         navigationController?.pushViewController(controller, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let dellAction = delAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [dellAction])
+    }
+    
+    private func delAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "🗑"){ _,_,completion in
+            Firebase().deleteNoteFromNet(self.notes[indexPath.row] ){ resultIsOK in
+                guard resultIsOK else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.uiNotes.remove(at: indexPath.row)
+                    self.notes.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+            completion(true)
+        }
+        action.backgroundColor = .red
+        return action
+    }
 }
 
 extension NotesViewController: UITableViewDataSource {

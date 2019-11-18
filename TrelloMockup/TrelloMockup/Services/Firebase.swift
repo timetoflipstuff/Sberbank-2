@@ -47,6 +47,7 @@ extension Firebase: NetSaver {
     }
     
     private func pushNoteToNet(_ note: Note) {
+
         let url = URL(string: baseLink + "/\(note.id)" + apiKeyEnding)!
         sendNoteToCloud(url: url, responseType: FirebaseResponse.self, body: note)
     }
@@ -58,6 +59,28 @@ extension Firebase: NetSaver {
         request.httpBody = try! JSONEncoder().encode(body)
         
         let task = URLSession(configuration: config).dataTask(with: request) { (data, response, error) in }
+        task.resume()
+    }
+}
+
+extension Firebase{
+
+    public func deleteNoteFromNet(_ note: Note, compl: @escaping (Bool) -> Void){
+        
+        let url = URL(string: baseLink + "/\(note.id)" + apiKeyEnding)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(note)
+        
+        let task = URLSession(configuration: config).dataTask(with: request) { (data, response, error) in
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+            if httpResponse.statusCode == 200 {
+                compl(true)
+            }            
+        }
         task.resume()
     }
 }

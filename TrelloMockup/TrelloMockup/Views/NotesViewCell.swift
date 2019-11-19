@@ -36,5 +36,9 @@ class NotesViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    
+    override func prepareForReuse() {
+        nameLabel.text = ""
+    }
 
 }

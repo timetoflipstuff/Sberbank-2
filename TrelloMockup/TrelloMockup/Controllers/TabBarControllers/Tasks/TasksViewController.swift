@@ -20,7 +20,6 @@ class TasksViewController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.decelerationRate = .fast
         
-        
         navigationItem.title = "Задачи"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -37,6 +36,10 @@ class TasksViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColumnCollectionViewCell.reuseId, for: indexPath) as! ColumnCollectionViewCell
         cell.columnName.text = "     \(columns[indexPath.row].name)"
+        cell.tasksController.tasks.append(contentsOf: columns[indexPath.row].tasks)
+        cell.tasksController.name = columns[indexPath.row].name
+        cell.tasksController.delegate = self
+        cell.tasksController.collectionView.reloadData()
         return cell
     }
     
@@ -55,7 +58,8 @@ class TasksViewController: UICollectionViewController {
             let textField = alert?.textFields![0]
             let columnName = textField?.text
             
-            self.columns.append(Column(name: columnName ?? ""))
+            self.columns.append(Column(name: columnName ?? "", tasks: []))
+            //let indexPath = [IndexPath(row: self.columns.count - 1, section: 0)]
             self.collectionView.reloadData()
             
             
@@ -67,7 +71,21 @@ class TasksViewController: UICollectionViewController {
     
 }
 
-
+extension TasksViewController: AddTaskDelegate {
+    
+    func didAddTask(name: String, columnName: String) {
+        print("\(name) \(columnName)")
+        for i in 0 ..< columns.count {
+            if columns[i].name == columnName {
+                columns[i].tasks.append(Task(name: name))
+                print("\(columns[i].name) \(name)")
+                //collectionView.reloadData()
+            }
+        }
+        
+    }
+    
+}
 
 extension TasksViewController: UICollectionViewDelegateFlowLayout {
     

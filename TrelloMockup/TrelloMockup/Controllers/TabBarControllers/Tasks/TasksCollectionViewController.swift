@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol AddTaskDelegate {
+    func didAddTask(name: String, columnName: String)
+}
+
 class TasksCollectionViewController: UICollectionViewController {
     
-    var tasks: [Task] = []
+    public var name = ""
     
-    var counter = 10
+    public var tasks: [Task] = []
+    
+    var delegate: AddTaskDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +42,6 @@ class TasksCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TasksCollectionViewCell.reuseId, for: indexPath) as! TasksCollectionViewCell
-        
         if indexPath.row == tasks.count {
             cell.taskName.text = "Добавить задачу"
             cell.backgroundColor = .lightGray
@@ -61,7 +67,9 @@ class TasksCollectionViewController: UICollectionViewController {
                 let taskName = textField?.text
                 
                 self.tasks.append(Task(name: taskName ?? ""))
+                self.delegate?.didAddTask(name: taskName ?? "", columnName: self.name)
                 self.collectionView.reloadData()
+                
                 
             }))
             

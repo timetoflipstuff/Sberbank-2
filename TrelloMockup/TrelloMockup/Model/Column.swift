@@ -7,10 +7,14 @@
 //
 
 import Foundation
-struct Column {
+
+class Column {
     
     var name: String
-    var tasks: [Task]
+    
+    init(name: String) {
+        self.name = name
+    }
     
 }
 

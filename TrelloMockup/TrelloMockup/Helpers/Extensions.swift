@@ -19,3 +19,29 @@ extension UIButton {
         backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
     }
 }
+
+extension UIColor {
+    static let lighterGray = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
+}
+
+extension String {
+    
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
+    }
+    
+}
+
+extension Dictionary where Value: RangeReplaceableCollection {
+    @discardableResult 
+    public mutating func append(element: Value.Iterator.Element, toValueOfKey key: Key) -> Value? {
+        var value: Value = self[key] ?? Value()
+        value.append(element)
+        self[key] = value
+        return value
+    }
+}

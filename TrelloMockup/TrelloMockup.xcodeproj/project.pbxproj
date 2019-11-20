@@ -17,17 +17,19 @@
 		115093212375889B0077652D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115093202375889A0077652D /* SignInViewController.swift */; };
 		1150932323758AE90077652D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932223758AE90077652D /* SignUpViewController.swift */; };
 		11509325237590150077652D /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509324237590150077652D /* BaseTabBarController.swift */; };
-		11509327237590820077652D /* TasksCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509326237590820077652D /* TasksCollectionViewController.swift */; };
+		11509327237590820077652D /* CardsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509326237590820077652D /* CardsCollectionViewController.swift */; };
 		11509329237590B60077652D /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11509328237590B60077652D /* NotesViewController.swift */; };
 		1150932B237590F60077652D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932A237590F60077652D /* SettingsViewController.swift */; };
 		1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150932C23759C4B0077652D /* AddItemViewController.swift */; };
 		1150933823771FEB0077652D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150933723771FEB0077652D /* RootViewController.swift */; };
+		116BE087237EA1CA00E6909D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BE086237EA1CA00E6909D /* NetworkManager.swift */; };
+		116BE090237F115C00E6909D /* TrelloModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BE08F237F115C00E6909D /* TrelloModels.swift */; };
 		E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D47623789F100073ADC2 /* NotesViewCell.swift */; };
 		E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */; };
-		E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */; };
-		E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */; };
+		E663D485237AC7C00073ADC2 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D484237AC7C00073ADC2 /* ListCollectionViewCell.swift */; };
+		E663D487237AC7D70073ADC2 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D486237AC7D70073ADC2 /* CardCollectionViewCell.swift */; };
 		E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */; };
-		E663D48B237AC7FE0073ADC2 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */; };
+		E663D48B237AC7FE0073ADC2 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48A237AC7FE0073ADC2 /* ListsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,17 +45,19 @@
 		115093202375889A0077652D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		1150932223758AE90077652D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		11509324237590150077652D /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		11509326237590820077652D /* TasksCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCollectionViewController.swift; sourceTree = "<group>"; };
+		11509326237590820077652D /* CardsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewController.swift; sourceTree = "<group>"; };
 		11509328237590B60077652D /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		1150932A237590F60077652D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1150932C23759C4B0077652D /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		1150933723771FEB0077652D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		116BE086237EA1CA00E6909D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		116BE08F237F115C00E6909D /* TrelloModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloModels.swift; sourceTree = "<group>"; };
 		E663D47623789F100073ADC2 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
 		E663D4782378BEB60073ADC2 /* NotesViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCellController.swift; sourceTree = "<group>"; };
-		E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnCollectionViewCell.swift; sourceTree = "<group>"; };
-		E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCollectionViewCell.swift; sourceTree = "<group>"; };
+		E663D484237AC7C00073ADC2 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		E663D486237AC7D70073ADC2 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
-		E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		E663D48A237AC7FE0073ADC2 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +74,8 @@
 		1149C73C237B0A4D00401FC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E663D484237AC7C00073ADC2 /* ColumnCollectionViewCell.swift */,
-				E663D486237AC7D70073ADC2 /* TasksCollectionViewCell.swift */,
+				E663D484237AC7C00073ADC2 /* ListCollectionViewCell.swift */,
+				E663D486237AC7D70073ADC2 /* CardCollectionViewCell.swift */,
 				E663D47623789F100073ADC2 /* NotesViewCell.swift */,
 			);
 			path = Views;
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				1149C73D237B612600401FC6 /* Column.swift */,
+				116BE08F237F115C00E6909D /* TrelloModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 		115093002375793C0077652D /* TrelloMockup */ = {
 			isa = PBXGroup;
 			children = (
+				116BE088237EA1CE00E6909D /* Network */,
 				1149C73F237B612E00401FC6 /* Model */,
 				1150931923757FF20077652D /* Helpers */,
 				1149C73C237B0A4D00401FC6 /* Views */,
@@ -117,8 +123,8 @@
 		11509315237579D50077652D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				11509313237579C30077652D /* WelcomeViewController.swift */,
 				1150933723771FEB0077652D /* RootViewController.swift */,
+				11509313237579C30077652D /* WelcomeViewController.swift */,
 				1150932E2375A5920077652D /* RegistrationControllers */,
 				1150932F2375A5A10077652D /* TabBarControllers */,
 			);
@@ -168,8 +174,8 @@
 		115093302375A5F50077652D /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				E663D48A237AC7FE0073ADC2 /* TasksViewController.swift */,
-				11509326237590820077652D /* TasksCollectionViewController.swift */,
+				E663D48A237AC7FE0073ADC2 /* ListsViewController.swift */,
+				11509326237590820077652D /* CardsCollectionViewController.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -190,6 +196,14 @@
 				1150932A237590F60077652D /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		116BE088237EA1CE00E6909D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				116BE086237EA1CA00E6909D /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,24 +276,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E663D485237AC7C00073ADC2 /* ColumnCollectionViewCell.swift in Sources */,
+				E663D485237AC7C00073ADC2 /* ListCollectionViewCell.swift in Sources */,
+				116BE090237F115C00E6909D /* TrelloModels.swift in Sources */,
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
 				E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */,
 				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
 				1150932B237590F60077652D /* SettingsViewController.swift in Sources */,
-				E663D487237AC7D70073ADC2 /* TasksCollectionViewCell.swift in Sources */,
+				E663D487237AC7D70073ADC2 /* CardCollectionViewCell.swift in Sources */,
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
 				1150931B237580940077652D /* RegistrationViewController.swift in Sources */,
 				E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */,
-				E663D48B237AC7FE0073ADC2 /* TasksViewController.swift in Sources */,
+				116BE087237EA1CA00E6909D /* NetworkManager.swift in Sources */,
+				E663D48B237AC7FE0073ADC2 /* ListsViewController.swift in Sources */,
 				11509329237590B60077652D /* NotesViewController.swift in Sources */,
 				1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */,
 				1149C73E237B612600401FC6 /* Column.swift in Sources */,
 				115093212375889B0077652D /* SignInViewController.swift in Sources */,
-				11509327237590820077652D /* TasksCollectionViewController.swift in Sources */,
+				11509327237590820077652D /* CardsCollectionViewController.swift in Sources */,
 				E663D47723789F100073ADC2 /* NotesViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,10 +18,10 @@ class RegistrationViewController: UIViewController {
     
     let signInButton = UIButton(title: "Sign in", fontSize: 30, cornerRadius: 24)
     let signUpButton = UIButton(title: "Sign up", fontSize: 30, cornerRadius: 24)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         
         
@@ -67,5 +67,5 @@ class RegistrationViewController: UIViewController {
     @objc private func handleSignUp() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
-
+    
 }

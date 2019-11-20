@@ -16,7 +16,7 @@ class BaseTabBarController: UITabBarController {
         let layout = BetterSnappingLayout()
         layout.scrollDirection = .horizontal
         
-        let tasksViewController = UINavigationController(rootViewController: TasksViewController(collectionViewLayout: layout))
+        let tasksViewController = UINavigationController(rootViewController: ListsViewController(collectionViewLayout: layout))
         tasksViewController.tabBarItem = UITabBarItem(title: "Задачи", image: UIImage(named: "tasks"), tag: 0)
         
         let notesViewController = UINavigationController(rootViewController: NotesViewController())

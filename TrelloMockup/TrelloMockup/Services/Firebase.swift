@@ -83,4 +83,24 @@ extension Firebase{
         }
         task.resume()
     }
+    
+    func uploadImage(image: UIImage, handler: @escaping (String) -> Void) {
+        let compressedImage = image.jpegData(compressionQuality: 0)
+
+        let url = URL(string: "https://www.googleapis.com/upload/storage/v1/b/2222333344444.appspot.com/o/?uploadType=media&name=\(arc4random()).jpg")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        request.httpBody =  Data(compressedImage!)
+        URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+            guard let data = data, error == nil else {return}
+            do {
+                let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String:Any]
+                let imageUrl = "11111"//dictionary["mediaLink"] as! String
+                handler(imageUrl)
+            } catch let error as NSError {
+                print(error)
+            }
+        }).resume()
+    }
 }

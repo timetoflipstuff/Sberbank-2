@@ -70,7 +70,11 @@ extension NotesViewController: AddItemDelegate {
         notes.append(note)
         navigationItem.title = "Заметки: \(uiNotes.count)"
         tableView.reloadData()
+        Firebase().uploadImage(image: uiNote.img){_ in 
+            
+        }
         cloudSaver.pushNotesToNet(notes)
+        
     }
 }
 

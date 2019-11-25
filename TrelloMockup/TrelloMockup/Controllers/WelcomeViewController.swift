@@ -10,7 +10,13 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    let shapeLayer = CAShapeLayer()
+    var animator: UIDynamicAnimator!
+    var gravity: UIGravityBehavior!
+    var collision: UICollisionBehavior!
+    var elasticity: UIDynamicItemBehavior!
+    
+    
+    var orangeSquare: UIView!
 
     let welcomeLabel: UILabel = {
         let label = UILabel()
@@ -29,6 +35,8 @@ class WelcomeViewController: UIViewController {
 
         view.backgroundColor = .white
         
+        orangeSquare = UIView(frame: CGRect(x: self.view.frame.width / 2 - 200, y: 0, width: 400, height: 400))
+        orangeSquare.layer.cornerRadius = 200
         
         view.addSubview(welcomeLabel)
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -56,44 +64,36 @@ class WelcomeViewController: UIViewController {
     
     private func performAnimation() {
         
+        UIView.animate(withDuration: 5, animations: {
+            self.welcomeLabel.removeFromSuperview()
+            self.startButton.removeFromSuperview()
+            
+            self.orangeSquare.backgroundColor = .orange
+            self.view.addSubview(self.orangeSquare)
+            
+            self.animator = UIDynamicAnimator(referenceView: self.view)
+            let gravity = UIGravityBehavior(items: [self.orangeSquare])
+            self.animator.addBehavior(gravity)
+            
+            self.collision = UICollisionBehavior(items: [self.orangeSquare])
+            self.collision.translatesReferenceBoundsIntoBoundary = true
+            self.animator.addBehavior(self.collision)
+            
+            let elasticity = UIDynamicItemBehavior(items: [self.orangeSquare])
+            elasticity.elasticity = 0.7
+            self.animator.addBehavior(elasticity)
+        }) { (finished) in
+            AppDelegate.shared.rootViewController.switchToMainScreen()
+        }
         
-        welcomeLabel.removeFromSuperview()
-        startButton.removeFromSuperview()
-
-        let trackLayer = CAShapeLayer()
-        let center = view.center
-        let circularPath = UIBezierPath(arcCenter: center, radius: 180, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-        trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = UIColor.lightGray.cgColor
-        trackLayer.lineWidth = 20
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-        trackLayer.fillColor = UIColor.clear.cgColor
-        view.layer.addSublayer(trackLayer)
-        
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.strokeColor = UIColor.orange.cgColor
-        shapeLayer.lineWidth = 20
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeEnd = 0
-        view.layer.addSublayer(shapeLayer)
         
         
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        
-        basicAnimation.toValue = 1
-        basicAnimation.duration = 3
-        basicAnimation.delegate = self
-        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-        basicAnimation.isRemovedOnCompletion = false
-        self.shapeLayer.add(basicAnimation, forKey: "key")
     }
 
 }
 
-extension WelcomeViewController: CAAnimationDelegate {
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        AppDelegate.shared.rootViewController.switchToMainScreen()
-    }
-}
+//extension WelcomeViewController: CAAnimationDelegate {
+//    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+//        AppDelegate.shared.rootViewController.switchToMainScreen()
+//    }
+//}

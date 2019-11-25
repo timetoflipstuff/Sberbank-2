@@ -61,7 +61,9 @@ class NotesViewController: UIViewController {
             DispatchQueue.main.async {
                 self.loadSpinner.stopAnimating()
                 self.tableView.alpha = 1
+                self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
                 self.tableView.reloadData()
+                self.loadVisibleCellsImages()
             }
         }
     }

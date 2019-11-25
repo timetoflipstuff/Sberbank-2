@@ -17,6 +17,7 @@ class NotesViewController: UIViewController {
     
     private let dataSource: NetFetcher = Firebase()
     private let cloudSaver: NetSaver = Firebase()
+    private let firebase: Firebase = Firebase()
     
     private let loadSpinner: UIActivityIndicatorView = {
         let loginSpinner = UIActivityIndicatorView()
@@ -54,6 +55,9 @@ class NotesViewController: UIViewController {
         dataSource.getNotes() { receivedNotes in
             self.notes = receivedNotes
             self.uiNotes = receivedNotes.compactMap(){UINote($0)}
+            for i in 0..<self.notes.count {
+                print(self.notes[i].imgURL ?? "No image")
+            }
             DispatchQueue.main.async {
                 self.loadSpinner.stopAnimating()
                 self.tableView.alpha = 1
@@ -61,6 +65,18 @@ class NotesViewController: UIViewController {
             }
         }
     }
+    
+    private func loadVisibleCellsImages() {
+            for cell in tableView.visibleCells {
+                let indexPath = tableView.indexPath(for: cell)!
+                guard let url = self.notes[indexPath.row].imgURL else { continue }
+                firebase.downloadImage(link: url, completion: { image in
+                    self.uiNotes[indexPath.row].img = image
+                    print("cell #\(indexPath.row) has an image!")
+                    self.tableView.reloadRows(at: [indexPath], with: .fade)
+                })
+            }
+        }
     
     @objc private func handleAddNote() {
         let controller = AddItemViewController()
@@ -113,6 +129,10 @@ extension NotesViewController: UITableViewDelegate {
         }
         action.backgroundColor = .red
         return action
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadVisibleCellsImages()
     }
 }
 

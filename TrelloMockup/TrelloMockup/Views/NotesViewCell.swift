@@ -12,8 +12,8 @@ class NotesViewCell: UITableViewCell {
     
     public static let reuseId = "noteCell"
     
-    private let nameLable = UILabel()
-    private var imgView = UIImageView()
+    public let nameLable = UILabel()
+    public var imgView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,6 +56,11 @@ class NotesViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    
+    override func prepareForReuse() {
+        nameLable.text = ""
+        imgView.image = nil
     }
 
 }

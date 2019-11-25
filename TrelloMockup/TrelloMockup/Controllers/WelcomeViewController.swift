@@ -10,14 +10,8 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    var animator: UIDynamicAnimator!
-    var gravity: UIGravityBehavior!
-    var collision: UICollisionBehavior!
-    var elasticity: UIDynamicItemBehavior!
+    let shapeLayer = CAShapeLayer()
     
-    
-    var orangeSquare: UIView!
-
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,14 +23,10 @@ class WelcomeViewController: UIViewController {
     }()
     
     let startButton = UIButton(title: "Начать", fontSize: 30, cornerRadius: 24)
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
         
-        orangeSquare = UIView(frame: CGRect(x: self.view.frame.width / 2 - 200, y: 0, width: 400, height: 400))
-        orangeSquare.layer.cornerRadius = 200
         
         view.addSubview(welcomeLabel)
         welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -51,11 +41,30 @@ class WelcomeViewController: UIViewController {
         startButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
         
         startButton.addTarget(self, action: #selector(handleStart), for: .touchUpInside)
+        
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 1
+        pulseAnimation.toValue = 0.7
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = Float.greatestFiniteMagnitude
+        
+        let expandAnimation = CABasicAnimation(keyPath: "transform.scale")
+        expandAnimation.duration = 1
+        expandAnimation.fromValue = 1
+        expandAnimation.toValue = 1.15
+        expandAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        expandAnimation.autoreverses = true
+        expandAnimation.repeatCount = Float.greatestFiniteMagnitude
+        
+        startButton.layer.add(pulseAnimation, forKey: nil)
+        startButton.layer.add(expandAnimation, forKey: nil)
     }
-    
-    
+            
     @objc private func handleStart() {
         if AppDelegate.defaults.value(forKey: "token") != nil {
+//            AppDelegate.shared.rootViewController.switchToMainScreen()
             performAnimation()
         } else {
             AppDelegate.shared.rootViewController.switchToLogout()
@@ -64,36 +73,39 @@ class WelcomeViewController: UIViewController {
     
     private func performAnimation() {
         
-        UIView.animate(withDuration: 5, animations: {
-            self.welcomeLabel.removeFromSuperview()
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeAnimation.duration = 0.3
+        fadeAnimation.fromValue = 1
+        fadeAnimation.toValue = 0
+        fadeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        fadeAnimation.isRemovedOnCompletion = true
+        
+        let expandAnimation = CABasicAnimation(keyPath: "transform.scale")
+        expandAnimation.duration = 0.3
+        expandAnimation.fromValue = 1
+        expandAnimation.toValue = 3
+        expandAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        expandAnimation.delegate = self
+        expandAnimation.isRemovedOnCompletion = true
+        
+        welcomeLabel.layer.add(fadeAnimation, forKey: nil)
+        startButton.layer.add(fadeAnimation, forKey: nil)
+        startButton.layer.add(expandAnimation, forKey: nil)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.startButton.removeFromSuperview()
-            
-            self.orangeSquare.backgroundColor = .orange
-            self.view.addSubview(self.orangeSquare)
-            
-            self.animator = UIDynamicAnimator(referenceView: self.view)
-            let gravity = UIGravityBehavior(items: [self.orangeSquare])
-            self.animator.addBehavior(gravity)
-            
-            self.collision = UICollisionBehavior(items: [self.orangeSquare])
-            self.collision.translatesReferenceBoundsIntoBoundary = true
-            self.animator.addBehavior(self.collision)
-            
-            let elasticity = UIDynamicItemBehavior(items: [self.orangeSquare])
-            elasticity.elasticity = 0.7
-            self.animator.addBehavior(elasticity)
-        }) { (finished) in
-            AppDelegate.shared.rootViewController.switchToMainScreen()
+            self.welcomeLabel.removeFromSuperview()
         }
         
-        
-        
     }
-
+    
+}
+        
+extension WelcomeViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        AppDelegate.shared.rootViewController.switchToMainScreen()
+    }
 }
 
-//extension WelcomeViewController: CAAnimationDelegate {
-//    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-//        AppDelegate.shared.rootViewController.switchToMainScreen()
-//    }
-//}
+

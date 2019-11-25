@@ -17,19 +17,25 @@ class NotesViewController: UIViewController {
     
     private let dataSource: NetFetcher = Firebase()
     private let cloudSaver: NetSaver = Firebase()
+    private let firebase: Firebase = Firebase()
     
     private let loadSpinner: UIActivityIndicatorView = {
         let loginSpinner = UIActivityIndicatorView()
         loginSpinner.color = .orange
-        loginSpinner.transform = CGAffineTransform(scaleX: 4, y: 4)
+        loginSpinner.transform = CGAffineTransform(scaleX: 2, y: 2)
         loginSpinner.translatesAutoresizingMaskIntoConstraints = false
         loginSpinner.hidesWhenStopped = true
         return loginSpinner
     }()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadVisibleCellsImages()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Заметки: \(uiNotes.count)"
+        navigationItem.title = "Заметки"
         
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,16 +57,34 @@ class NotesViewController: UIViewController {
         loadSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         loadSpinner.startAnimating()
-        dataSource.getNotes(){ receivedNotes in
+        dataSource.getNotes() { receivedNotes in
             self.notes = receivedNotes
             self.uiNotes = receivedNotes.compactMap(){UINote($0)}
+            for i in 0..<self.notes.count {
+                print(self.notes[i].imgURL ?? "No image")
+            }
+            
+            print(self.uiNotes.count)
             DispatchQueue.main.async {
+                self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
                 self.loadSpinner.stopAnimating()
                 self.tableView.alpha = 1
                 self.tableView.reloadData()
+                self.loadVisibleCellsImages()
             }
         }
     }
+    
+    private func loadVisibleCellsImages() {
+            for cell in tableView.visibleCells {
+                guard let indexPath = tableView.indexPath(for: cell), let url = self.notes[indexPath.row].imgURL else { continue }
+                firebase.downloadImage(link: url, completion: { image in
+                    self.uiNotes[indexPath.row].img = image
+                    print("cell #\(indexPath.row) has an image!")
+                    self.tableView.reloadRows(at: [indexPath], with: .fade)
+                })
+            }
+        }
     
     @objc private func handleAddNote() {
         let controller = AddItemViewController()
@@ -74,14 +98,13 @@ extension NotesViewController: AddItemDelegate {
     public func didAddItem(_ uiNote: UINote) {
         uiNotes.append(uiNote)
         let note = Note(name: uiNote.name, imgURL: nil, id: nil)
-        notes.append(note)
-        navigationItem.title = "Заметки: \(uiNotes.count)"
-        tableView.reloadData()
-        Firebase().uploadImage(image: uiNote.img){_ in
-            
-        }
-        cloudSaver.pushNotesToNet(notes)
-        
+        self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
+        self.tableView.reloadData()
+        Firebase().uploadImage(image: uiNote.img, handler: { imgUrl in
+            note.imgURL = imgUrl
+            self.notes.append(note)
+            self.cloudSaver.pushNotesToNet(self.notes)
+        })
     }
 }
 
@@ -115,6 +138,10 @@ extension NotesViewController: UITableViewDelegate {
         action.backgroundColor = .red
         return action
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadVisibleCellsImages()
+    }
 }
 
 extension NotesViewController: UITableViewDataSource {
@@ -133,12 +160,3 @@ extension NotesViewController: UITableViewDataSource {
     }
 }
 
-
-//class Note {
-//    var name = ""
-//    
-//    convenience init(name: String) {
-//        self.init()
-//        self.name = name
-//    }
-//}

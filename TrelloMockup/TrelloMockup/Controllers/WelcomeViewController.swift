@@ -9,6 +9,8 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    let shapeLayer = CAShapeLayer()
 
     let welcomeLabel: UILabel = {
         let label = UILabel()
@@ -46,10 +48,52 @@ class WelcomeViewController: UIViewController {
     
     @objc private func handleStart() {
         if AppDelegate.defaults.value(forKey: "token") != nil {
-            AppDelegate.shared.rootViewController.switchToMainScreen()
+            performAnimation()
         } else {
             AppDelegate.shared.rootViewController.switchToLogout()
         }
     }
+    
+    private func performAnimation() {
+        
+        
+        welcomeLabel.removeFromSuperview()
+        startButton.removeFromSuperview()
 
+        let trackLayer = CAShapeLayer()
+        let center = view.center
+        let circularPath = UIBezierPath(arcCenter: center, radius: 180, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        
+        trackLayer.path = circularPath.cgPath
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 20
+        trackLayer.lineCap = CAShapeLayerLineCap.round
+        trackLayer.fillColor = UIColor.clear.cgColor
+        view.layer.addSublayer(trackLayer)
+        
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = UIColor.orange.cgColor
+        shapeLayer.lineWidth = 20
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeEnd = 0
+        view.layer.addSublayer(shapeLayer)
+        
+        
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        
+        basicAnimation.toValue = 1
+        basicAnimation.duration = 3
+        basicAnimation.delegate = self
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.isRemovedOnCompletion = false
+        self.shapeLayer.add(basicAnimation, forKey: "key")
+    }
+
+}
+
+extension WelcomeViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        AppDelegate.shared.rootViewController.switchToMainScreen()
+    }
 }

@@ -30,6 +30,11 @@
 		E663D487237AC7D70073ADC2 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D486237AC7D70073ADC2 /* CardCollectionViewCell.swift */; };
 		E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */; };
 		E663D48B237AC7FE0073ADC2 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E663D48A237AC7FE0073ADC2 /* ListsViewController.swift */; };
+		E6DC5A1A238C243B0060CFD2 /* UINote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC5A19238C243B0060CFD2 /* UINote.swift */; };
+		E6DC5A1C238C245A0060CFD2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC5A1B238C245A0060CFD2 /* Note.swift */; };
+		E6DC5A1E238C24B70060CFD2 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC5A1D238C24B70060CFD2 /* Firebase.swift */; };
+		E6DC5A20238C24CC0060CFD2 /* NetFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC5A1F238C24CC0060CFD2 /* NetFetcher.swift */; };
+		E6DC5A22238C24E00060CFD2 /* NetSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC5A21238C24E00060CFD2 /* NetSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +63,11 @@
 		E663D486237AC7D70073ADC2 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E663D488237AC7E90073ADC2 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		E663D48A237AC7FE0073ADC2 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
+		E6DC5A19238C243B0060CFD2 /* UINote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINote.swift; sourceTree = "<group>"; };
+		E6DC5A1B238C245A0060CFD2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E6DC5A1D238C24B70060CFD2 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		E6DC5A1F238C24CC0060CFD2 /* NetFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetFetcher.swift; sourceTree = "<group>"; };
+		E6DC5A21238C24E00060CFD2 /* NetSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,8 @@
 			children = (
 				1149C73D237B612600401FC6 /* Column.swift */,
 				116BE08F237F115C00E6909D /* TrelloModels.swift */,
+				E6DC5A19238C243B0060CFD2 /* UINote.swift */,
+				E6DC5A1B238C245A0060CFD2 /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				116BE086237EA1CA00E6909D /* NetworkManager.swift */,
+				E6DC5A1D238C24B70060CFD2 /* Firebase.swift */,
+				E6DC5A1F238C24CC0060CFD2 /* NetFetcher.swift */,
+				E6DC5A21238C24E00060CFD2 /* NetSaver.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -278,7 +293,9 @@
 			files = (
 				E663D485237AC7C00073ADC2 /* ListCollectionViewCell.swift in Sources */,
 				116BE090237F115C00E6909D /* TrelloModels.swift in Sources */,
+				E6DC5A1C238C245A0060CFD2 /* Note.swift in Sources */,
 				11509325237590150077652D /* BaseTabBarController.swift in Sources */,
+				E6DC5A1A238C243B0060CFD2 /* UINote.swift in Sources */,
 				1150931D237582830077652D /* Extensions.swift in Sources */,
 				E663D489237AC7E90073ADC2 /* BetterSnappingLayout.swift in Sources */,
 				1150933823771FEB0077652D /* RootViewController.swift in Sources */,
@@ -287,12 +304,15 @@
 				1150932323758AE90077652D /* SignUpViewController.swift in Sources */,
 				115093022375793C0077652D /* AppDelegate.swift in Sources */,
 				11509314237579C30077652D /* WelcomeViewController.swift in Sources */,
+				E6DC5A20238C24CC0060CFD2 /* NetFetcher.swift in Sources */,
 				1150931B237580940077652D /* RegistrationViewController.swift in Sources */,
 				E663D4792378BEB60073ADC2 /* NotesViewCellController.swift in Sources */,
 				116BE087237EA1CA00E6909D /* NetworkManager.swift in Sources */,
 				E663D48B237AC7FE0073ADC2 /* ListsViewController.swift in Sources */,
 				11509329237590B60077652D /* NotesViewController.swift in Sources */,
+				E6DC5A1E238C24B70060CFD2 /* Firebase.swift in Sources */,
 				1150932D23759C4B0077652D /* AddItemViewController.swift in Sources */,
+				E6DC5A22238C24E00060CFD2 /* NetSaver.swift in Sources */,
 				1149C73E237B612600401FC6 /* Column.swift in Sources */,
 				115093212375889B0077652D /* SignInViewController.swift in Sources */,
 				11509327237590820077652D /* CardsCollectionViewController.swift in Sources */,

@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 struct FirebaseResponse: Codable {
     let statusCode: Int
@@ -84,22 +85,44 @@ extension Firebase{
     }
     
     func uploadImage(image: UIImage, handler: @escaping (String) -> Void) {
-        let compressedImage = image.jpegData(compressionQuality: 0)
+        //let compressedImage = image.jpegData(compressionQuality: 0)
 
-        let url = URL(string: "https://www.googleapis.com/upload/storage/v1/b/2222333344444.appspot.com/o/?uploadType=media&name=\(arc4random()).jpg")!
+        let imageData = image.jpegData(compressionQuality: 0.1)
+        let base64Image = imageData?.base64EncodedString(options: .lineLength64Characters)
+        
+        let url = URL(string: "https://api.imgur.com/3/upload")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-        request.httpBody =  Data(compressedImage!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("CLIENT-ID 94b8df681dd5d46", forHTTPHeaderField: "Authorization")
+        let bodyDict = ["image": "\(base64Image!)", "name": "\(arc4random()).jpg", "type": "base64"]
+        if let jsonBody = try? JSONSerialization.data(withJSONObject: bodyDict, options: .prettyPrinted) {
+            request.httpBody = jsonBody
+        } else {
+            print("poopie")
+            return
+        }
+        
         URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
-            guard let data = data, error == nil else {return}
+            guard let data = data, error == nil else {
+                print("poop")
+                return
+            }
             do {
-                let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String:Any]
-                let imageUrl = "11111"//dictionary["mediaLink"] as! String
+                let response = try JSONDecoder().decode(JsonResponse.self, from: data)
+                let imageUrl = response.data.link
+                print(imageUrl)
                 handler(imageUrl)
-            } catch let error as NSError {
+            } catch {
                 print(error)
             }
         }).resume()
     }
+}
+
+struct JsonResponse: Codable {
+    struct JsonData: Codable {
+        let link: String
+    }
+    let data: JsonData
 }

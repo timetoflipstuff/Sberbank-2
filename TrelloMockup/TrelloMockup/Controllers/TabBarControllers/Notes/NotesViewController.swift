@@ -51,7 +51,7 @@ class NotesViewController: UIViewController {
         loadSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         loadSpinner.startAnimating()
-        dataSource.getNotes(){ receivedNotes in
+        dataSource.getNotes() { receivedNotes in
             self.notes = receivedNotes
             self.uiNotes = receivedNotes.compactMap(){UINote($0)}
             DispatchQueue.main.async {
@@ -74,14 +74,13 @@ extension NotesViewController: AddItemDelegate {
     public func didAddItem(_ uiNote: UINote) {
         uiNotes.append(uiNote)
         let note = Note(name: uiNote.name, imgURL: nil, id: nil)
-        notes.append(note)
-        navigationItem.title = "Заметки: \(uiNotes.count)"
-        tableView.reloadData()
-        Firebase().uploadImage(image: uiNote.img){_ in
-            
-        }
-        cloudSaver.pushNotesToNet(notes)
-        
+        self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
+        self.tableView.reloadData()
+        Firebase().uploadImage(image: uiNote.img, handler: { imgUrl in
+            note.imgURL = imgUrl
+            self.notes.append(note)
+            self.cloudSaver.pushNotesToNet(self.notes)
+        })
     }
 }
 

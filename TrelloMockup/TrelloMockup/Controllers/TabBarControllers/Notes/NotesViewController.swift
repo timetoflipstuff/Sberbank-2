@@ -19,14 +19,7 @@ class NotesViewController: UIViewController {
     private let cloudSaver: NetSaver = Firebase()
     private let firebase: Firebase = Firebase()
     
-    private let loadSpinner: UIActivityIndicatorView = {
-        let loginSpinner = UIActivityIndicatorView()
-        loginSpinner.color = .orange
-        loginSpinner.transform = CGAffineTransform(scaleX: 2, y: 2)
-        loginSpinner.translatesAutoresizingMaskIntoConstraints = false
-        loginSpinner.hidesWhenStopped = true
-        return loginSpinner
-    }()
+    var animations = [UIView(), UIView(), UIView()]
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,11 +45,41 @@ class NotesViewController: UIViewController {
         
         tableView.register(NotesViewCell.self, forCellReuseIdentifier: NotesViewCell.reuseId)
         
-        view.addSubview(loadSpinner)
-        loadSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loadSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        for (index, view) in animations.enumerated() {
+            self.view.addSubview(view)
+            view.layer.cornerRadius = 15
+            view.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            var center = CGPoint()
+            
+            if index == 0 {
+                center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+                view.center = center
+                view.backgroundColor = .red
+                UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                    view.center = CGPoint(x: center.x, y: center.y - 50)
+                })
+                
+            } else if index == 1 {
+                center = CGPoint(x: self.view.frame.width / 2 - CGFloat(45), y: self.view.frame.height / 2)
+                view.center = center
+                view.backgroundColor = .green
+                UIView.animate(withDuration: 0.5, delay: 0.1, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                    view.center = CGPoint(x: center.x, y: center.y - 50)
+                })
+                
+            } else if index == 2 {
+                center = CGPoint(x: self.view.frame.width / 2 + CGFloat(45), y: self.view.frame.height / 2)
+                view.center = center
+                view.backgroundColor = .blue
+                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                    view.center = CGPoint(x: center.x, y: center.y - 50)
+                })
+                
+            }
+            
+        }
         
-        loadSpinner.startAnimating()
         dataSource.getNotes() { receivedNotes in
             self.notes = receivedNotes
             self.uiNotes = receivedNotes.compactMap(){UINote($0)}
@@ -67,7 +90,9 @@ class NotesViewController: UIViewController {
             print(self.uiNotes.count)
             DispatchQueue.main.async {
                 self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
-                self.loadSpinner.stopAnimating()
+                
+                self.animations.forEach { $0.removeFromSuperview() }
+                
                 self.tableView.alpha = 1
                 self.tableView.reloadData()
                 self.loadVisibleCellsImages()

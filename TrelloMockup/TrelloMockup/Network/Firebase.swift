@@ -123,7 +123,7 @@ extension Firebase{
         let url = URL(string: link)
         let request = URLRequest(url: url!)
         let task = URLSession.shared.dataTask(with: request) { (data : Data?, response: URLResponse?, error : Error?) in
-            guard let image = UIImage(data: data!) else { return }
+            guard let data = data, let image = UIImage(data: data) else { return }
             DispatchQueue.main.async {
                 completion(image)
             }

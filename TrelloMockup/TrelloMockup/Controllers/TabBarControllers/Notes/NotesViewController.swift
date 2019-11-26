@@ -101,15 +101,16 @@ class NotesViewController: UIViewController {
     }
     
     private func loadVisibleCellsImages() {
-            for cell in tableView.visibleCells {
-                guard let indexPath = tableView.indexPath(for: cell), let url = self.notes[indexPath.row].imgURL else { continue }
-                firebase.downloadImage(link: url, completion: { image in
-                    self.uiNotes[indexPath.row].img = image
-                    print("cell #\(indexPath.row) has an image!")
-                    self.tableView.reloadRows(at: [indexPath], with: .fade)
-                })
-            }
+        for cell in self.tableView.visibleCells {
+            guard let indexPath = self.tableView.indexPath(for: cell), let url = self.notes[indexPath.row].imgURL else { continue }
+            self.firebase.downloadImage(link: url, completion: { image in
+                self.uiNotes[indexPath.row].img = image
+                print("cell #\(indexPath.row) has an image!")
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            })
         }
+        
+    }
     
     @objc private func handleAddNote() {
         let controller = AddItemViewController()
@@ -125,11 +126,13 @@ extension NotesViewController: AddItemDelegate {
         let note = Note(name: uiNote.name, imgURL: nil, id: nil)
         self.navigationItem.title = "Заметки: \(self.uiNotes.count)"
         self.tableView.reloadData()
+        self.notes.append(note)
+        let noteNum = self.notes.count
         Firebase().uploadImage(image: uiNote.img, handler: { imgUrl in
-            note.imgURL = imgUrl
-            self.notes.append(note)
+            self.notes[noteNum-1].imgURL = imgUrl
             self.cloudSaver.pushNotesToNet(self.notes)
         })
+        
     }
 }
 

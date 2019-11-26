@@ -109,9 +109,9 @@ extension ListsViewController {
         NetworkManager.shared.getBoards { (boards) in
             guard let boards = boards else { return }
             for board in boards {
-                
+                print(board.name)
                 // В прилоложении не реализован механизм множества досок.
-                if board.name == "Рыжая команда, Спринт 2" {
+                if board.name == "Тестовая доска от оранжевой команды" {
                     self.boardId = board.id
                     self.getListsFrom(board: board.id)
                 }
